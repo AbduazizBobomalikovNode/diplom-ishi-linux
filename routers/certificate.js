@@ -277,7 +277,7 @@ router.post('/add', auth, async (req, res) => {
       path: '/certifcate'
     });
   }
-  console.log(certificate);
+  // console.log(certificate);
   res.send(`<!DOCTYPE html>
     <html lang="en">
     <head>

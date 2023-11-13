@@ -338,7 +338,7 @@ function getMonth(month, lang) {
             "Январь", "Февраль", "Март", "Апрель", "Май", "июнь", "Июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь",
         ]
     };
-    console.log(month, lang)
+    // console.log(month, lang)
     return months[lang][month];
 }
 
@@ -357,7 +357,7 @@ function formatDate(date, lang) {
 
 
 function formatDoc(data) {
-    console.log(data);
+    // console.log(data);
     let template = temp[data.lang][`doc${data.doc}`];
     switch (parseInt(data.doc)) {
         case 1:
