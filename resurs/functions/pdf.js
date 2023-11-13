@@ -9,7 +9,7 @@ const exec = util.promisify(require('child_process').exec);
 
 async function createPDF(doc, pdf) {
     try {
-        const { stdout, stderr } = await exec(`docx2pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"  "${path.resolve(__dirname, "../../views/certifcate/" + pdf)}"`);
+        const { stdout, stderr } = await exec(`pandoc  "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"  -o  "${path.resolve(__dirname, "../../views/certifcate/" + pdf)}"`);
         console.log('ishladi :', stdout);
         return true;
     } catch (error) {
