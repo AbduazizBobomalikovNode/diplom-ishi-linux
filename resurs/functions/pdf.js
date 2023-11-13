@@ -9,11 +9,11 @@ const exec = util.promisify(require('child_process').exec);
 
 async function createPDF(doc, pdf) {
     try {
-        const { stdout, stderr } = await exec(`docx2pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"  "${path.resolve(__dirname, "../../views/certifcate/" + pdf)}"`);
+        const { stdout, stderr } = await exec(`sudo docx2pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"  "${path.resolve(__dirname, "../../views/certifcate/" + pdf)}"`);
         console.log('ishladi :', stdout);
         return true;
     } catch (error) {
-        // console.log("xatolik :", error);
+        console.log("xatolik :", error);
         return false;
     }
 }
@@ -94,11 +94,11 @@ async function toPdf(data, name_doc, url_doc, doc, lang) {
         return [150, 150];
     }
     var imageModule = new ImageModule(opts);
-    var segs = url_doc || (new Date()).toUTCString();
     var name = 'natija.jpg'
     data.image = name;
     let name_docx = name_doc + "_" + (new Date()).valueOf() + ".docx";
     let name_pdf = name_doc + "_" + (new Date()).valueOf() + ".pdf";
+    var segs = "/documents/" + name_pdf || (new Date()).toUTCString();
     const file = __dirname + '\\' + name;
     // console.log(file);
     const file_docx = __dirname + '\\' + name_docx;
