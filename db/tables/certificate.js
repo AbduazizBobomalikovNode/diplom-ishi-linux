@@ -18,14 +18,9 @@ function Certificate(table) {
             })
         return result;
     };
-    // this.getCertificateDevice = async (id) => {
-    //     const result = await table.find({ iddevice: id }, { projection: { _id: 0 } })
-    //         .sort({ date: 1, iddevice: 1 }).toArray()
-    //     return result;
-    // };
     this.getCertificateAll = async () => {
         const result = await table.find({}, { projection: { _id: 0 } })
-            .sort({ date: 1 }).toArray()
+            .sort({ date: -1 }).toArray()
         return result;
     };
     this.addCertificate = async (certificate) => {

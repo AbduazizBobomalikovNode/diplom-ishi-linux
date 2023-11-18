@@ -19,11 +19,12 @@ router.get("/", auth, async (req, res) => {
   let lang = { uz: "o'zbekcha", ru: "ruscha" };
   let doc_name = {
     1: 'qiyoslash guvohnomasi',
-    2: 'avtosisterna qiyoslash guvohnomasi',
-    3: 'attestatsiyadan o‘tkazish sertifikati',
-    4: 'O‘lchash vositasining  yaroqsizlikgi',
-    5: 'sinov vositasining yaroqsizligi',
-    6: 'pasport',
+    2: 'yuqori aniqlikdagi qiyoslash guvohnomasi',
+    3: 'avtosisterna qiyoslash guvohnomasi',
+    4: 'attestatsiyadan o‘tkazish sertifikati',
+    5: 'O‘lchash vositasining  yaroqsizlikgi',
+    6: 'sinov vositasining yaroqsizligi',
+    7: 'pasport',
   }
   res.render('public/pages/certificate', {
     path: '',
@@ -450,6 +451,7 @@ router.get('/update/:id', auth, async (req, res) => {
     });
   }
   let certifcate = await (await db).certificate.getCertificate(id);
+  console.log(certifcate);
   if (!certifcate) {
     return res.render('public/pages/erors/error-404', {
       status: 404,
@@ -507,10 +509,10 @@ router.post('/update/:id', auth, async (req, res) => {
     });
     // return res.status(404).json({ error: 'ushbu idga mos certificate to\'pilmadi!' });
   }
-  console.log("certificate : ",certificate);
+  // console.log("certificate : ",certificate);
   unlinkSync(certificate.url);
   let result_format = formatDoc(body);
-  console.log("result_format : ",result_format);
+  // console.log("result_format : ",result_format);
   result_format.id  = certificate.id;
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
@@ -752,6 +754,7 @@ router.get('/all/delete/:id', auth, async (req, res) => {
       // });
     }
     let result = await (await db).certificate.delete(element);
+    unlinkSync(role.url);
   }
   res.send(`<!DOCTYPE html>
   <html lang="en">

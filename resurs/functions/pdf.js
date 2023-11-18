@@ -7,6 +7,7 @@ const path = require("path");
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+
 async function createPDF(doc, pdf) {
     try {
         const { stdout, stderr } = await exec(`unoconv -f pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"`);
@@ -17,60 +18,79 @@ async function createPDF(doc, pdf) {
         return false;
     }
 }
-var demo = {
-    id: `${(new Date()).valueOf()}`.slice(0, 5),
-    service_name: "юкори аникликдаги ўлчаш воситасини киёслаш ГУВОҲНОМАСИ*",
-    validity_period_year: 20,
-    validity_period_day: 25,
-    validity_period_month: "aprel",
-    model_tools: "wadwdawdawdawdawd",
-    document_title: "dawdawdawdawd",
-    metrology_service_name: "sefefesfesfesf",
-    instruments_owner: "DWadwdwad",
-    measuring_instruments: "dwadawdawd",
-    importing_country: "wadwdawdwa",
-    parameters_measuring_instruments: "wadwdawdCVawdawdawdaw",
-    parameters_measuring_instruments2: "",
-    importing_naming_marking: "wadwdawdawdawdawdawdawd",
-    compliance_with_requirements: "wadawdawdawdawd",
-    compliance_with_requirements2: "",
-    Comparison_date_year: 23,
-    Comparison_date_day: 23,
-    Comparison_date_month: "yanvar",
-    leader: "awdawdawddawd",
-    Scornful: "awdawdawdawda"
-}
 
 async function getContent(doc, lang) {
-    if (lang == "uz" || lang == "ru") {
+    if (lang == "uz") {
         if (doc == 1) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/demo1uz.docx"),
+                path.resolve(__dirname, "../template/demo1uz_lotin.docx"),
                 "binary");
         }
         if (doc == 2) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/uz2.docx"),
+                path.resolve(__dirname, "../template/yuqori_aniqlikdagi_поверка_на_узбекском_latin.docx"),
                 "binary");
         }
         if (doc == 3) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/demo3uz.docx"),
+                path.resolve(__dirname, "../template/uz2.docx"),
                 "binary");
         }
         if (doc == 4) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/demo4uz.docx"),
+                path.resolve(__dirname, "../template/demo4uz_lotin.docx"),
                 "binary");
         }
         if (doc == 5) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/demo5uz.docx"),
+                path.resolve(__dirname, "../template/извещение_на_узбекском_поверка_lotin.docx"),
                 "binary");
         }
         if (doc == 6) {
             return fs.readFileSync(
+                path.resolve(__dirname, "../template/извещение_на_узбекском_аттестация_lotin.docx"),
+                "binary");
+        }
+        if (doc == 7) {
+            return fs.readFileSync(
                 path.resolve(__dirname, "../template/uz6.docx"),
+                "binary");
+        }
+    }
+    if (lang == "ru") {
+        if (doc == 1) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/серт  на русском поверка (2)(doc1).docx"),
+                "binary");
+        }
+        if (doc == 2) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/серт_на_русском_поверка_высокоточности.docx"),
+                "binary");
+        }
+        if (doc == 3) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/__ru3.docx"),
+                "binary");
+        }
+        if (doc == 4) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/Attestasiya на русском (2).docx"),
+                "binary");
+        }
+        if (doc == 5) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/извещение на русском поверка (2).docx"),
+                "binary");
+        }
+        if (doc == 6) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/извещение на русском аттестация (2).docx"),
+                "binary");
+        }
+        if (doc == 7) {
+            return fs.readFileSync(
+                path.resolve(__dirname, "../template/шаблоны путевые на русском (2).docx"),
                 "binary");
         }
     }
@@ -90,8 +110,8 @@ async function toPdf(data, name_doc, url_doc, doc, lang) {
     }
     opts.getSize = function (img, tagValue, tagName) {
         if (doc == 2) return [130, 130];
-        if (doc == 6) return [140, 140];
-        return [150, 150];
+        // if (doc == 6) return [140, 140];
+        return [140, 140];
     }
     var imageModule = new ImageModule(opts);
     var name = 'natija.jpg'
@@ -157,3 +177,26 @@ module.exports = toPdf;
 //     leader: data.leader,
 //     Scornful: data.Scornful
 // }
+var demo = {
+    id: `${(new Date()).valueOf()}`.slice(0, 5),
+    service_name: "юкори аникликдаги ўлчаш воситасини киёслаш ГУВОҲНОМАСИ*",
+    validity_period_year: 20,
+    validity_period_day: 25,
+    validity_period_month: "aprel",
+    model_tools: "wadwdawdawdawdawd",
+    document_title: "dawdawdawdawd",
+    metrology_service_name: "sefefesfesfesf",
+    instruments_owner: "DWadwdwad",
+    measuring_instruments: "dwadawdawd",
+    importing_country: "wadwdawdwa",
+    parameters_measuring_instruments: "wadwdawdCVawdawdawdaw",
+    parameters_measuring_instruments2: "",
+    importing_naming_marking: "wadwdawdawdawdawdawdawd",
+    compliance_with_requirements: "wadawdawdawdawd",
+    compliance_with_requirements2: "",
+    Comparison_date_year: 23,
+    Comparison_date_day: 23,
+    Comparison_date_month: "yanvar",
+    leader: "awdawdawddawd",
+    Scornful: "awdawdawdawda"
+}
