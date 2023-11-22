@@ -346,6 +346,7 @@ function replaser(str, num) {
     return [[str.slice(0, num), ''], str.slice(num, str.length)];
 }
 function formatDate(date, lang) {
+    console.log(date,lang);
     return [date.slice(2, 4), date.slice(8, 10), getMonth(Number(date.slice(5, 7)) - 1, lang)]
 }
 
