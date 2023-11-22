@@ -161,22 +161,23 @@ let char_info = {
 function charBalance(str, count = 86) {
     let i = 0;
     let str_cut = "";
-    console.log("charBalance:",str);
-    while((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)) > 0 && count > 0 && str.length > i) {
-        if (str[i]) {
-            str_cut += str[i];
-            count -= char_info[str[i]] ? char_info[str[i]].offset : 1;
-            i++;
-        }else{
-            console.log("xato");
+    console.log("charBalance:", str);
+    if (str)
+        while ((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)) > 0 && count > 0 && str.length > i) {
+            if (str[i]) {
+                str_cut += str[i];
+                count -= char_info[str[i]] ? char_info[str[i]].offset : 1;
+                i++;
+            } else {
+                console.log("xato");
+            }
         }
-    }
     let char_soult = Math.abs(parseInt(count));
-    console.log((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)),char_info[str[i]])
-    if (char_soult%2==0) {
-        return ["_".repeat(char_soult/2),str_cut,"_".repeat(char_soult/2), str.slice(i, str.length),Math.abs(parseInt(count))]
+    console.log((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)), char_info[str[i]])
+    if (char_soult % 2 == 0) {
+        return ["_".repeat(char_soult / 2), str_cut, "_".repeat(char_soult / 2), str.slice(i, str.length), Math.abs(parseInt(count))]
     } else {
-        return ["_".repeat(parseInt(char_soult/2)+1),str_cut,"_".repeat(parseInt(char_soult/2)),str.slice(i, str.length),Math.abs(parseInt(count))]
+        return ["_".repeat(parseInt(char_soult / 2) + 1), str_cut, "_".repeat(parseInt(char_soult / 2)), str.slice(i, str.length), Math.abs(parseInt(count))]
     }
     // return ["",str_cut,"", str.slice(i, str.length),Math.abs(parseInt(count))]
 }
