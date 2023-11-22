@@ -21,7 +21,7 @@ class Db {
     constructor() {
         this.buffer = (async function () {
             await client.connect();
-            db = await client.db('certificate_system_demo');
+            db = await client.db('certificate_system');
             console.log("bazaga ulanish hosil qilindi");
             // await sxema(db);
             return {
