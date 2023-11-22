@@ -28,12 +28,12 @@ async function getContent(doc, lang) {
         }
         if (doc == 2) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/yuqori_aniqlikdagi_поверка_на_узбекском_latin.docx"),
+                path.resolve(__dirname, "../template/demo2uz_lotin.docx"),
                 "binary");
         }
         if (doc == 3) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/uz2.docx"),
+                path.resolve(__dirname, "../template/demo3uz_lotin.docx"),
                 "binary");
         }
         if (doc == 4) {
@@ -43,54 +43,54 @@ async function getContent(doc, lang) {
         }
         if (doc == 5) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/извещение_на_узбекском_поверка_lotin.docx"),
+                path.resolve(__dirname, "../template/demo5uz_lotin.docx"),
                 "binary");
         }
         if (doc == 6) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/извещение_на_узбекском_аттестация_lotin.docx"),
+                path.resolve(__dirname, "../template/demo6uz_lotin.docx"),
                 "binary");
         }
         if (doc == 7) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/uz6.docx"),
+                path.resolve(__dirname, "../template/demo7uz_lotin.docx"),
                 "binary");
         }
     }
     if (lang == "ru") {
         if (doc == 1) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/серт  на русском поверка (2)(doc1).docx"),
+                path.resolve(__dirname, "../template/demo1ru_end.docx"),
                 "binary");
         }
         if (doc == 2) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/серт_на_русском_поверка_высокоточности.docx"),
+                path.resolve(__dirname, "../template/demo2ru_end.docx"),
                 "binary");
         }
         if (doc == 3) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/__ru3.docx"),
+                path.resolve(__dirname, "../template/demo3ru_end.docx"),
                 "binary");
         }
         if (doc == 4) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/Attestasiya на русском (2).docx"),
+                path.resolve(__dirname, "../template/demo4ru_end.docx"),
                 "binary");
         }
         if (doc == 5) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/извещение на русском поверка (2).docx"),
+                path.resolve(__dirname, "../template/demo5ru_end.docx"),
                 "binary");
         }
         if (doc == 6) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/извещение на русском аттестация (2).docx"),
+                path.resolve(__dirname, "../template/demo6ru_end.docx"),
                 "binary");
         }
         if (doc == 7) {
             return fs.readFileSync(
-                path.resolve(__dirname, "../template/шаблоны путевые на русском (2).docx"),
+                path.resolve(__dirname, "../template/demo7ru_end.docx"),
                 "binary");
         }
     }
