@@ -1,6 +1,0 @@
-{
-    "watch": ["../"],
-    "ext": "js,json,css,pug",
-    "exec": "node index.js"
-}
-  
