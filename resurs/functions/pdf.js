@@ -10,7 +10,7 @@ const exec = util.promisify(require('child_process').exec);
 
 async function createPDF(doc, pdf) {
     try {
-        const { stdout, stderr } = await exec(`docx2pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"  "${path.resolve(__dirname, "../../views/certifcate/" + pdf)}"`);
+        const { stdout, stderr } = await exec(`unoconv -f pdf "${path.resolve(__dirname, "../../views/certifcate/" + doc)}"`);
         console.log('ishladi :', stdout);
         return true;
     } catch (error) {
