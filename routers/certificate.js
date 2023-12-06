@@ -406,7 +406,17 @@ router.post('/add', auth, async (req, res) => {
   let certificate = {
     ...result_format
   }
-  certificate.id = generateId();
+  if(parseInt(body.ids)){
+    let result = await (await db).certificate.getCertificateObj({id:parseInt(body.ids)});
+    if(result.length > 0){
+      certificate.id = parseInt(body.ids); 
+      certificate.son = result[0].son;
+    }
+  }else {
+    certificate.id = generateId();
+    certificate.son = await (await db).static.add(`doc${body.doc}`);
+  }
+
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
   let result_pdf = await toPdf(certificate, hash, __dirname, body.doc, body.lang);
@@ -418,7 +428,7 @@ router.post('/add', auth, async (req, res) => {
     });
   }
   certificate = {
-    son : await (await db).static.add(`doc${body.doc}`),
+    son: certificate.son,
     id: certificate.id,
     type: body.doc,
     lang: body.lang,

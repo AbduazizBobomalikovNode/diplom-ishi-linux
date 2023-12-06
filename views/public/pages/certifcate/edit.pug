@@ -133,6 +133,13 @@ html(lang='en')
                       input(type='text' name='doc' value='1' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
                       .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
+                      .row
                         .col-md-6
                           .form-group.row
                             label.col-sm-4.col-form-label &Acy;&mcy;&acy;&lcy; &#x49B;&icy;&lcy;&icy;&shcy; &mcy;&ucy;&dcy;&acy;&tcy;&icy;
@@ -173,8 +180,8 @@ html(lang='en')
                           .form-group.row
                             label.col-sm-2.col-form-label &mcy;&iecy;&tcy;&rcy;&ocy;&lcy;&ocy;&gcy;&icy;&kcy; &tcy;&acy;&vcy;&scy;&icy;&fcy;&lcy;&icy;
                             .col-sm-10
-                              textarea.form-control(id='' required='' name='line6'  cols='30' rows='3' placeholder='ўлчаш воситаларини параметрларнинг номи, ўлчашлар, хатолик чегаралари, аниклик даражаси')
-                               | #{data.line6}
+                              textarea.form-control(id='' required='' name='line6' cols='30' rows='3' placeholder='ўлчаш воситаларини параметрларнинг номи, ўлчашлар, хатолик чегаралари, аниклик даражаси')
+                                | #{data.line6}
                       .row
                         .col-md-12
                           .form-group.row
@@ -186,8 +193,8 @@ html(lang='en')
                           .form-group.row
                             label.col-sm-2.col-form-label &tcy;&acy;&lcy;&acy;&bcy;&lcy;&acy;&rcy;&icy;&gcy;&acy; &mcy;&ocy;&scy;&lcy;&icy;&gcy;&icy;
                             .col-sm-10
-                              textarea.form-control(id='' name='line9'   required='' cols='30' rows='3' placeholder='ўлчаш воситаларига куйиладиган талабларини регламентловчи норматив хужжат белгиланиши ва номи,ўлчаш  воситаси турининг таърифи')
-                               | #{data.line9}
+                              textarea.form-control(id='' name='line9' required='' cols='30' rows='3' placeholder='ўлчаш воситаларига куйиладиган талабларини регламентловчи норматив хужжат белгиланиши ва номи,ўлчаш  воситаси турининг таърифи')
+                                | #{data.line9}
                       .row
                         .col-md-6
                           .form-group.row
@@ -207,6 +214,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='1' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       .row
                         .col-md-6
                           .form-group.row 
@@ -291,6 +305,14 @@ html(lang='en')
                     form(action='/certifcate/update/'+id, method='POST').forms-sample
                       input(type='text' name='doc' value='2' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
+                      .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
+
                       .row
                         .col-md-6
                           .form-group.row
@@ -378,6 +400,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='2' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       .row
                         .col-md-6
                           .form-group.row 
@@ -468,6 +497,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id, method='POST').forms-sample
                       input(type='text' name='doc' value='3' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
+                      .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
                       h6.text-center O&grave;lchash vositasi haqida ma&grave;lumot
                       .row
                         .col-md-12
@@ -715,6 +751,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='3' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       h6.text-center Информация о средстве измерений 
                       .row
                         .col-md-12
@@ -962,6 +1005,13 @@ html(lang='en')
                       input(type='text' name='doc' value='4' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
                       .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
+                      .row
                         .col-md-6
                           .form-group.row
                             label.col-sm-4.col-form-label &Acy;&mcy;&acy;&lcy; &#x49B;&icy;&lcy;&icy;&shcy; &mcy;&ucy;&dcy;&acy;&tcy;&icy;
@@ -1040,6 +1090,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='4' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       .row
                         .col-md-6
                           .form-group.row
@@ -1128,6 +1185,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id, method='POST').forms-sample
                       input(type='text' name='doc' value='5' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
+                      .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
                       .row
                         .col-md-12
                           .form-group.row
@@ -1221,6 +1285,13 @@ html(lang='en')
                       input(type='text' name='doc' value='5' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
                       .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
+                      .row
                         .col-md-12
                           .form-group.row
                             label.col-sm-2.col-form-label наименование и обозначение средства измерений, заводской номер
@@ -1303,6 +1374,13 @@ html(lang='en')
                       input(type='text' name='doc' value='6' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
                       .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
+                      .row
                         .col-md-6
                           .form-group.row
                             label.col-sm-4.col-form-label &Bcy;&iecy;&rcy;&icy;&lcy;&gcy;&acy;&ncy; &scy;&acy;&ncy;&acy;
@@ -1366,6 +1444,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='6' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       .row
                         .col-md-6
                           .form-group.row
@@ -1433,6 +1518,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id, method='POST').forms-sample
                       input(type='text' name='doc' value='7' hidden='')
                       input.lang_in(type='text' name='lang' value='uz' hidden='')
+                      .row
+                        .col-md-12
+                          .form-group.row
+                            label.col-sm-2.col-form-label Hujat idisi
+                            .col-sm-10
+                              input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                      
                       .row
                         .col-md-12
                           .form-group.row
@@ -1522,6 +1614,13 @@ html(lang='en')
                     form(action='/certifcate/update/'+id method='POST').forms-sample
                       input(type='text' name='doc' value='7' hidden='')
                       input.lang_in(type='text' name='lang' value='ru' hidden='')
+                      .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+
                       .row
                         .col-md-12
                           .form-group.row

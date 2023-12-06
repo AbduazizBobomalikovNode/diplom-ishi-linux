@@ -114,7 +114,7 @@ html(lang='en')
                       .preview-icon.bg-dark.rounded-circle
                         i.mdi.mdi-logout.text-danger
                     .preview-item-content
-                        p.preview-subject.mb-1 Hisobdan chiqish
+                      p.preview-subject.mb-1 Hisobdan chiqish
                   .dropdown-divider
             button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center(type='button' data-toggle='offcanvas')
               span.mdi.mdi-format-line-spacing
@@ -148,6 +148,13 @@ html(lang='en')
                   form(action='/certifcate/add' method='POST')#f1uz.forms-sample
                     input(type='text' name='doc' value='1' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     .row
                       .col-md-6
                         .form-group.row
@@ -216,10 +223,17 @@ html(lang='en')
                             input.form-control(type='text' name='line11' required='' placeholder='Қиесловчи')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f1ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='1' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-6
                         .form-group.row 
@@ -294,11 +308,18 @@ html(lang='en')
                             input.form-control(type='text' name='line14' required='' placeholder='Поверитель')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f2uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='2' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+          
                     .row
                       .col-md-6
                         .form-group.row 
@@ -373,10 +394,17 @@ html(lang='en')
                             input.form-control(type='text' name='line12' required='' placeholder='Қиесловчи')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f2ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='2' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-6
                         .form-group.row 
@@ -457,11 +485,18 @@ html(lang='en')
                             input.form-control(type='text' name='line15' required='' placeholder='Поверитель')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f3uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='3' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     h6.text-center O&grave;lchash vositasi haqida ma&grave;lumot
                     .row
                       .col-md-12
@@ -704,10 +739,17 @@ html(lang='en')
                             input.form-control(type='text' name='line29' required='' placeholder='Qiyoslovchi')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f3ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='3' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     h6.text-center Информация о средстве измерений 
                     .row
                       .col-md-12
@@ -948,11 +990,18 @@ html(lang='en')
                             input.form-control(type='text' name='line29' required='' placeholder='Поверитель')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f4uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='4' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     .row
                       .col-md-6
                         .form-group.row
@@ -1026,10 +1075,17 @@ html(lang='en')
                             input.form-control(type='date' name='date3')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f4ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='4' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-6
                         .form-group.row
@@ -1041,7 +1097,7 @@ html(lang='en')
                         .form-group.row
                           label.col-sm-2.col-form-label наименование и обозначение средства испытаний
                           .col-sm-10
-                            textarea.form-control(type='text' name='line1' cols="30"  rows="2" required='' placeholder='наименование и обозначение средства испытаний')
+                            textarea.form-control(type='text' name='line1' cols="30" rows="2" required='' placeholder='наименование и обозначение средства испытаний')
                     .row
                       .col-md-12
                         .form-group.row
@@ -1108,11 +1164,18 @@ html(lang='en')
                             input.form-control(type='date' name='date3')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f5uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='5' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     .row
                       .col-md-12
                         .form-group.row
@@ -1193,10 +1256,17 @@ html(lang='en')
                             input.form-control(type='text' required='' name='line12' placeholder='Қиесловчи')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f5ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='5' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-12
                         .form-group.row
@@ -1208,7 +1278,7 @@ html(lang='en')
                         .form-group.row
                           label.col-sm-2.col-form-label наименование параметра, пределы измерений, погрешности, класс точности средства измерений
                           .col-sm-10
-                            textarea.form-control(type='text' name='line3' cols="30"  rows="2" required='' placeholder='наименование параметра, пределы измерений, погрешности, класс точности средства измерений')
+                            textarea.form-control(type='text' name='line3' cols="30" rows="2" required='' placeholder='наименование параметра, пределы измерений, погрешности, класс точности средства измерений')
                     .row
                       .col-md-12 
                         .form-group.row
@@ -1271,11 +1341,18 @@ html(lang='en')
                             input.form-control(type='text' required='' name='line13' placeholder='Поверитель')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f6uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='6' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     .row
                       .col-md-6
                         .form-group.row
@@ -1335,10 +1412,17 @@ html(lang='en')
                             input.form-control(name='line7' required='' placeholder='М.Ў. Метрологик  хизматининг мутахассиси')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f6ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='6' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-6
                         .form-group.row
@@ -1398,11 +1482,18 @@ html(lang='en')
                             input.form-control(name='line9' required='' placeholder='Специалист  метрологической службы')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
 
                   form(action='/certifcate/add' method='POST')#f7uz.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='7' hidden='')
                     input.lang_in(type='text' name='lang' value='uz' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Hujat idisi
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='hujjat idsi (kiritish ixtiyor)')
+                    
                     .row
                       .col-md-12
                         .form-group.row
@@ -1493,10 +1584,17 @@ html(lang='en')
                             input.form-control(type='text' required='' name='line5_3' placeholder='Tasdiqlash shtampi')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
+                      button.btn.btn-dark(type='button') Bekor qilish
                   form(action='/certifcate/add' method='POST')#f7ru.forms-sample(style='display: none;')
                     input(type='text' name='doc' value='7' hidden='')
                     input.lang_in(type='text' name='lang' value='ru' hidden='')
+                    .row
+                      .col-md-12
+                        .form-group.row
+                          label.col-sm-2.col-form-label Держатель документов
+                          .col-sm-10
+                            input.form-control(type='text' required='' name='ids' placeholder='идентификатор документа (необязательно)')
+                    
                     .row
                       .col-md-12
                         .form-group.row
@@ -1581,8 +1679,8 @@ html(lang='en')
                             input.form-control(type='text' required='' name='line5_3' placeholder='Места клейма')
                     button.btn.btn-primary.mr-2(type='submit') Yaratish
                     a(href="/certifcate") 
-                        button.btn.btn-dark(type='button') Bekor qilish
-          
+                      button.btn.btn-dark(type='button') Bekor qilish
+
           // content-wrapper ends
           // partial:partials/_footer.html
           footer.footer
