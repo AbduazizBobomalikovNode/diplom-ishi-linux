@@ -17,8 +17,8 @@ router.get("/", auth, async (req, res) => {
   let docs = await (await db).certificate.getCertificateAll();
   // let tasks = await (await db).task.getTaskAllFilter(0,15);
   // toPdf();
-  let id = (await (await db).role.getRoleForObj({name:"Qiyoslovchi"}))[0].id;
-  let employee = await (await db).user.getUserForObj({idrole:parseInt(id)});
+  // let id = (await (await db).role.getRoleForObj({ name: "Qiyoslovchi" }))[0].id;
+  // let employee = await (await db).user.getUserAll({ idrole: parseInt(0) });
   // console.log(id,employee);
   let lang = { uz: "o'zbekcha", ru: "ruscha" };
   let doc_name = {
@@ -84,7 +84,7 @@ router.get("/", auth, async (req, res) => {
     page: 1,
     lang: lang,
     doc_name: doc_name,
-    employee:employee,
+    employee: employee,
     ...bolimlar,
     user: req.user
   });
@@ -94,14 +94,14 @@ router.get("/", auth, async (req, res) => {
 router.get("/page/:page", auth, async (req, res) => {
   let page = parseInt(req.params.page);
   let query = req.query;
-  console.log(page,query);
+  console.log(page, query);
   if (!page) {
     page = 1;
   }
   let certificate = await (await db).certificate.getCertificateAll();
-  let certificates = await (await db).certificate.getCertificateAllFilter(page * 15 - 15, 15,query);
-  let id = (await (await db).role.getRoleForObj({name:"Qiyoslovchi"}))[0].id;
-  let employee = await (await db).user.getUserForObj({idrole:id});
+  let certificates = await (await db).certificate.getCertificateAllFilter(page * 15 - 15, 15, query);
+  let id = (await (await db).role.getRoleForObj({ name: "Qiyoslovchi" }))[0].id;
+  let employee = await (await db).user.getUserForObj({ idrole: id });
   // console.log(id,employee);
   let lang = { uz: "o'zbekcha", ru: "ruscha" };
   let doc_name = {
@@ -116,7 +116,7 @@ router.get("/page/:page", auth, async (req, res) => {
   let bolimlar = {
     update: false,
     deletes: false,
-    deletesAll:false,
+    deletesAll: false,
     add: false,
     view: false,
     role: false,
@@ -158,7 +158,7 @@ router.get("/page/:page", auth, async (req, res) => {
     page: page,
     lang: lang,
     doc_name: doc_name,
-    employee:employee,
+    employee: employee,
     ...bolimlar,
     user: req.user
   });
@@ -406,15 +406,22 @@ router.post('/add', auth, async (req, res) => {
   let certificate = {
     ...result_format
   }
-  if(parseInt(body.ids)){
-    let result = await (await db).certificate.getCertificateObj({id:parseInt(body.ids)});
-    if(result.length > 0){
-      certificate.id = parseInt(body.ids); 
+  let result_ = await (await db).certificate.getCertificateObj({ id: parseInt(body.ids) });
+  if (parseInt(body.ids) && result_) {
+    if (result_.length > 0) {
+      certificate.id = parseInt(body.ids);
       certificate.son = result[0].son;
+    } else {
+      certificate.id = generateId();
+      let raqami = await (await db).static.add(`doc${body.doc}`);
+      console.log("yaratilgan hujjat raqami :", raqami);
+      certificate.son = raqami;
     }
-  }else {
+  } else {
     certificate.id = generateId();
-    certificate.son = await (await db).static.add(`doc${body.doc}`);
+    let raqami = await (await db).static.add(`doc${body.doc}`);
+    console.log("yaratilgan hujjat raqami :", raqami);
+    certificate.son = raqami;
   }
 
   var name = generateId();
