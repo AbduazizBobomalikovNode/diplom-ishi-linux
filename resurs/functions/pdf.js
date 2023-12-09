@@ -118,7 +118,7 @@ async function toPdf(data, name_doc, url_doc, doc, lang) {
     data.image = name;
     let name_docx = name_doc + "_" + (new Date()).valueOf() + ".docx";
     let name_pdf = name_doc + "_" + (new Date()).valueOf() + ".pdf";
-    var segs = "http://185.196.213.8/documents/" + name_pdf || (new Date()).toUTCString();
+    var segs = "http://185.196.213.8:3000/documents/" + name_pdf || (new Date()).toUTCString();
     const file = __dirname + '\\' + name;
     // console.log(file);
     const file_docx = __dirname + '\\' + name_docx;
