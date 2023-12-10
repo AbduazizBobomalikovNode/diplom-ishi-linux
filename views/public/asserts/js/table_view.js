@@ -15,7 +15,10 @@ let button1_add_tr = document.getElementById("table-dynamik1+");
 let button1_delete_tr = document.getElementById("table-dynamik1-");
 
 let list1_tr = document.getElementById('table2').children;
-let list2_tr = document.getElementById('table3').children;
+let list2_tr = null;
+if (button1_add_tr && button1_delete_tr) {
+    list2_tr = document.getElementById('table3').children;
+}
 
 
 button_delete_tr.onclick = () => {
