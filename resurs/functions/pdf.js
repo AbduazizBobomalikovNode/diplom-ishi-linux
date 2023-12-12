@@ -97,7 +97,7 @@ async function getContent(doc, lang) {
 
 }
 
-async function toPdf(data, name_doc, url_doc, doc, lang) {
+async function toPdf(data, name_doc, url_doc, doc, lang, imageFlag=false) {
     // console.log(data, name_doc, url_doc, doc, lang)
     const content = await getContent(doc, lang);
     const zip = new PizZip(content);
@@ -114,8 +114,10 @@ async function toPdf(data, name_doc, url_doc, doc, lang) {
         return [140, 140];
     }
     var imageModule = new ImageModule(opts);
-    var name = 'natija.jpg'
-    data.image = name;
+    var name = 'natija.jpg';
+    if (imageFlag) {
+        data.image = name;
+    }
     let name_docx = name_doc + "_" + (new Date()).valueOf() + ".docx";
     let name_pdf = name_doc + "_" + (new Date()).valueOf() + ".pdf";
     var segs = "http://185.196.213.8:3000/documents/" + name_pdf || (new Date()).toUTCString();

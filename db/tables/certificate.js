@@ -30,16 +30,16 @@ function Certificate(table) {
         }
         if (lang != "Hammasi" && lang) {
             quary.lang = lang;
-        } 
+        }
         if (date != "Hammasi" && date) {
             quary.date = date;
-        } 
+        }
         if (employee != "Hammasi" && employee) {
             quary.employee = employee;
         }
-        console.log(quary); 
+        console.log(quary);
         const result = await table.find(quary, { projection: { _id: 0, lastModified: 0 } })
-            .sort({ date: -1 }).limit(limit).skip(skip).toArray();
+            .sort({ son: 1}).limit(limit).skip(skip).toArray();
         return result;
     };
     this.addCertificate = async (certificate) => {

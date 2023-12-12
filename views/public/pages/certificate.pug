@@ -204,6 +204,7 @@ html(lang='en')
                                 label.form-check-label
                                   input(onclick='chekboxAll()')#all.form-check-input(type='checkbox')
                             th  № 
+                            th  Hujjat raqami
                             th  Hujjat turi
                             th  Hujjat tili
                             th  yaratilgan  vaqti 
@@ -218,6 +219,7 @@ html(lang='en')
                                   label.form-check-label
                                     input(id=docs[x].id,onclick='chekbox()').form-check-input(type='checkbox')
                               td  #{docs[x].son}
+                              td  #{docs[x].id}
                               td  #{doc_name[docs[x].type]}
                               td  #{lang[docs[x].lang]} 
                               td  #{docs[x].date}
@@ -248,9 +250,9 @@ html(lang='en')
                                       button.btn.btn-outline-light(type='button' title='tahrirlash')
                                         i.mdi.mdi-lead-pencil
                                   if deletes && docs[x].status &&  activeDocumentDelete
-                                      a(href='/certifcate/delete/'+docs[x].id)
-                                        button.btn.btn-outline-danger(type='button')
-                                          i.mdi.mdi-close
+                                    a(href='/certifcate/delete/'+docs[x].id)
+                                      button.btn.btn-outline-danger(type='button')
+                                        i.mdi.mdi-close
                                   else if deletes && !docs[x].status
                                     a(href='/certifcate/delete/'+docs[x].id)
                                       button.btn.btn-outline-danger(type='button')
@@ -280,7 +282,7 @@ html(lang='en')
                                   else 
                                     button.btn.btn-outline-secondary.disabled(type='button')   
                                       i.mdi.mdi-arrow-right-bold
-                            td #{count} ta element mavjut
+                            td(colspan=4)  #{count} ta element mavjut
           // content-wrapper ends
           // partial:partials/_footer.html
           footer.footer

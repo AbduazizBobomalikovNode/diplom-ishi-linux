@@ -15,16 +15,16 @@ setTimeout(async () => { db = await db }, 100);//
 
 router.get("/", auth, async (req, res) => {
   let docs = await (await db).certificate.getCertificateAll();
-  // let tasks = await (await db).task.getTaskAllFilter(0,15);
+  let tasks = await (await db).certificate.getCertificateAllFilter(0,15,{});
   // toPdf();
   // let id = (await (await db).role.getRoleForObj({ name: "Qiyoslovchi" }))[0].id;
-  let employee = (await (await db).user.getUserAll()).map((el)=>{
+  let employee = (await (await db).user.getUserAll()).map((el) => {
     return el.name
   });
   // console.log(id,employee);
-  let lang = { 
-    uz: "o'zbekcha", 
-    ru: "ruscha" 
+  let lang = {
+    uz: "o'zbekcha",
+    ru: "ruscha"
   };
   let doc_name = {
     1: 'qiyoslash guvohnomasi',
@@ -84,7 +84,7 @@ router.get("/", auth, async (req, res) => {
 
   res.render('public/pages/certificate', {
     path: '',
-    docs: docs,
+    docs: tasks,
     count: docs.length,
     page: 1,
     lang: lang,
@@ -143,21 +143,28 @@ router.get("/page/:page", auth, async (req, res) => {
   if (req.user.rolePath.includes("/user")) {
     bolimlar.user = true;
   }
-  if (req.user.rolePath.includes("/role/update")) {
+  if (req.user.rolePath.includes("/certifcate/update")) {
     bolimlar.update = true;
   }
-  if (req.user.rolePath.includes("/role/delete")) {
+  if (req.user.rolePath.includes("/certifcate/delete")) {
     bolimlar.deletes = true;
   }
   if (req.user.rolePath.includes("/certifcate/all/delete")) {
     bolimlar.deletesAll = true;
   }
-  if (req.user.rolePath.includes("/role/add")) {
+  if (req.user.rolePath.includes("/certifcate/add")) {
     bolimlar.add = true;
   }
-  if (req.user.rolePath.includes("/role/view")) {
+  if (req.user.rolePath.includes("/document")) {
     bolimlar.view = true;
   }
+  if (req.user.rolePath.includes("activeDocumentUpdate")) {
+    bolimlar.activeDocumentUpdate = true;
+  }
+  if (req.user.rolePath.includes("activeDocumentDelete")) {
+    bolimlar.activeDocumentDelete = true;
+  }
+  console.log(bolimlar,req.user.rolePath);
   res.render('public/pages/certificate', {
     path: '../',
     docs: certificates,
@@ -174,8 +181,49 @@ router.get("/page/:page", auth, async (req, res) => {
 
 router.get("/active/:id", auth, async (req, res) => {
   let id = parseInt(req.params.id);
-  let result = await (await db).certificate.update(id, { status: true });
-  console.log(result);
+
+  if (!id) {
+    return res.render('public/pages/erors/error-404', {
+      status: 400,
+      error: 'id xato berildi, id butun son qiymat bo\'lishi shart!',
+      path: '/certifcate'
+    });
+  }
+  let certifcate = await (await db).certificate.getCertificate(id);
+  if (!certifcate) {
+    return res.render('public/pages/erors/error-404', {
+      status: 404,
+      error: 'ushbu idga mos role to\'pilmadi!',
+      path: '/certifcate'
+    });
+  }
+  let result_format = formatDoc(certifcate.data);
+  // console.log("result_format : ",result_format);
+  result_format.id = certifcate.id;
+  var name = generateId();
+  var hash = crypto.createHash('md5').update(name + "").digest('hex');
+  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, certifcate.type, certifcate.lang,true);
+
+  if (!result_pdf) {
+    return res.render('public/pages/erors/error-404', {
+      status: 400,
+      error: "Hujjatni  tahrirlab bo'lmadi",
+      path: '/certifcate'
+    });
+  } else {
+    try {
+      unlinkSync(certifcate.url);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  certificate = {
+    link: result_pdf.link,
+    status: true
+  }
+  certificate.url = result_pdf.url;
+
+  let result = await (await db).certificate.update(id, certificate);
   res.send(`<script>window.location.href='/certifcate';</script>`);
 });
 
@@ -434,6 +482,7 @@ router.post('/add', auth, async (req, res) => {
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
   let result_pdf = await toPdf(certificate, hash, __dirname, body.doc, body.lang);
+
   if (!result_pdf) {
     return res.render('public/pages/erors/error-404', {
       status: 400,
