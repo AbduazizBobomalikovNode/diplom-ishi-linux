@@ -563,7 +563,7 @@ function formatDoc(data) {
                 template.line3demo = line3demo[1];
                 template.line3demo_end = line3demo[2];
 
-                let line3 = balance_doc(data.line3, 75);
+                let line3 = balance_doc(line3demo[3], 75);
                 template.line3_start = line3[0];
                 template.line3 = line3[1];
                 template.line3_end = line3[2];
@@ -599,7 +599,7 @@ function formatDoc(data) {
                 template.line8demo = line8demo[1];
                 template.line8demo_end = line8demo[2];
 
-                let line8 = balance_doc(data.line8, 68);
+                let line8 = balance_doc(line8demo[3], 68);
                 template.line8_start = line8[0];
                 template.line8 = line8[1];
                 template.line8_end = line8[2];
@@ -944,7 +944,7 @@ function formatDoc(data) {
                 template.line11 = line11[1];
                 template.line11_end = line11[2];
 
-                let line12 = balance_doc(line10[3], 86);
+                let line12 = balance_doc(line11[3], 86);
                 template.line12_start = line12[0];
                 template.line12 = line12[1];
                 template.line12_end = line12[2];
