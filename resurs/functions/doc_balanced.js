@@ -161,18 +161,18 @@ let char_info = {
 function charBalance(str, count = 86) {
     let i = 0;
     let str_cut = "";
-    console.log("charBalance:",str);
+    // console.log("charBalance:",str);
     while((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)) > 0 && count > 0 && str.length > i) {
         if (str[i]) {
             str_cut += str[i];
             count -= char_info[str[i]] ? char_info[str[i]].offset : 1;
             i++;
         }else{
-            console.log("xato");
+            console.log("charBalance xato");
         }
     }
     let char_soult = Math.abs(parseInt(count));
-    console.log((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)),char_info[str[i]])
+    // console.log((count - (char_info[str[i]] ? char_info[str[i]].offset : 1)),char_info[str[i]])
     if (char_soult%2==0) {
         let word = str.slice(str_cut.length, str.length);
         return ["_".repeat(char_soult/2),str_cut,"_".repeat(char_soult/2),word,Math.abs(parseInt(count))]

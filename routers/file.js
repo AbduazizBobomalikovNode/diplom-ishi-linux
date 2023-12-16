@@ -53,7 +53,7 @@ router.post('/add', auth, async (req, res) => {
             result
         );
     }
-    console.log(result);
+    // console.log(result);
     res.json(
         file
     );

@@ -14,7 +14,7 @@ Auth.get('/', async (req, res) => {
     if (!x_token) {
         return res.render('public/pages/login');
     }
-    res.send(`<!DOCTYPE html><head><script>setTimeout(()=>{window.location.href = '/';},50);</script></head><body></body></html>`);
+    res.send(`<!DOCTYPE html><head> <script>setTimeout(()=>{window.location.href = '/';},50);</script></head><body></body></html>`);
 })
 
 Auth.post('/', async (req, res) => {
@@ -65,6 +65,7 @@ Auth.post('/', async (req, res) => {
                     <head>
                         <meta charset="UTF-8">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title> REAL  ELECTRONICS  MChJ</title>
                         <script>
                             setTimeout(()=>{window.location.href = '/';},1000);
                         </script>

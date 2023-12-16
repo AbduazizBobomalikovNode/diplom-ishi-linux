@@ -99,7 +99,7 @@ router.get("/", auth, async (req, res) => {
 router.get("/page/:page", auth, async (req, res) => {
   let page = parseInt(req.params.page);
   let query = req.query;
-  console.log(page, query);
+  // console.log(page, query);
   if (!page) {
     page = 1;
   }
@@ -164,7 +164,7 @@ router.get("/page/:page", auth, async (req, res) => {
   if (req.user.rolePath.includes("activeDocumentDelete")) {
     bolimlar.activeDocumentDelete = true;
   }
-  console.log(bolimlar,req.user.rolePath);
+  // console.log(bolimlar,req.user.rolePath);
   res.render('public/pages/certificate', {
     path: '../',
     docs: certificates,
@@ -469,13 +469,13 @@ router.post('/add', auth, async (req, res) => {
     } else {
       certificate.id = generateId();
       let raqami = await (await db).static.add(`doc${body.doc}`);
-      console.log("yaratilgan hujjat raqami :", raqami);
+      // console.log("yaratilgan hujjat raqami :", raqami);
       certificate.son = raqami;
     }
   } else {
     certificate.id = generateId();
     let raqami = await (await db).static.add(`doc${body.doc}`);
-    console.log("yaratilgan hujjat raqami :", raqami);
+    // console.log("yaratilgan hujjat raqami :", raqami);
     certificate.son = raqami;
   }
 
@@ -691,7 +691,7 @@ router.get('/update/:id', auth, async (req, res) => {
     });
   }
   let certifcate = await (await db).certificate.getCertificate(id);
-  console.log(certifcate);
+  // console.log(certifcate);
   if (!certifcate) {
     return res.render('public/pages/erors/error-404', {
       status: 404,
@@ -1011,7 +1011,7 @@ router.get('/delete/:id', auth, async (req, res) => {
 
 router.get('/all/delete/:id', auth, async (req, res) => {
   let ids = (req.params.id.split('+')).map((el) => { return parseInt(el) });
-  console.log(ids, req.params.id);
+  // console.log(ids, req.params.id);
   if (!ids) {
     return res.render('public/pages/erors/error-404', {
       status: 400,

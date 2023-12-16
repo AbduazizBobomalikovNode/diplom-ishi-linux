@@ -16,11 +16,11 @@ router.get("/", auth, async (req, res) => {
     for (let index = 0; index < roles.length; index++) {
         let tasks = '';
         const element = await (await db).RHT.getRHTForObj({ idrole: roles[index].id });
-        console.log(element)
+        // console.log(element)
         for (let index_last = 0; index_last < element.length; index_last++) {
             const element_last = element[index_last];
             let demo = await (await db).task.getTask(element_last.idtask);
-            console.log(demo, element_last);
+            // console.log(demo, element_last);
             if ((index_last + 1) % 3 == 0) {
                 tasks += demo.name + '....';
                 break;
@@ -87,11 +87,11 @@ router.get("/page/:page", auth, async (req, res) => {
     for (let index = 0; index < roles.length; index++) {
         let tasks = '';
         const element = await (await db).RHT.getRHTForObj({ idrole: roles[index].id });
-        console.log(element)
+        // console.log(element)
         for (let index_last = 0; index_last < element.length; index_last++) {
             const element_last = element[index_last];
             let demo = await (await db).task.getTask(element_last.idtask);
-            console.log(demo, element_last);
+            // console.log(demo, element_last);
             if ((index_last + 1) % 3 == 0) {
                 tasks += demo.name + '....';
                 break;
@@ -249,11 +249,11 @@ router.post('/add', auth, async (req, res) => {
             path: '/role'
         });
     }
-    console.log(req.body);
+    // console.log(req.body);
     let tasks = req.body.tasks;
     if (req.body.hasOwnProperty('tasks') && req.body.tasks.length > 0) {
         tasks = tasks.split(',').map((el) => { return parseInt(el) });
-        console.log(tasks);
+        // console.log(tasks);
     }
     let body = req.body;
     let role_int = await (await db).role.getRoleForObj({ name: body.name });
@@ -298,7 +298,7 @@ router.post('/add', auth, async (req, res) => {
             }
         }
     }
-    console.log(tasks);
+    // console.log(tasks);
     res.send(`<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -386,7 +386,7 @@ router.post('/update/:id', auth, async (req, res) => {
             path: '/task'
         });
     }
-    console.log(req.body);
+    // console.log(req.body);
     let tasks = req.body.tasks;
     if (req.body.hasOwnProperty('tasks') && req.body.tasks.length > 0) {
         tasks = tasks.split(',').map((el) => { return parseInt(el) });
@@ -411,21 +411,21 @@ router.post('/update/:id', auth, async (req, res) => {
         });
     }
     let RHTs = (await (await db).RHT.getRHTRole(id))//.map((el) => { return el.idtask });
-    console.log("avvall ", tasks, RHTs);
+    // console.log("avvall ", tasks, RHTs);
     let cloneArr = [...RHTs];
     for (let index = 0; index < cloneArr.length; index++) {
         const element = cloneArr[index].idtask;
         if (tasks.includes(element)) {
             tasks.splice(tasks.indexOf(element), 1);
-            console.log('o\'chirildi ', RHTs[RHTs.indexOf(cloneArr[index])])
+            // console.log('o\'chirildi ', RHTs[RHTs.indexOf(cloneArr[index])])
             RHTs.splice(RHTs.indexOf(cloneArr[index]), 1);
         }
     }
-    console.log("keyin ", tasks, RHTs);
+    // console.log("keyin ", tasks, RHTs);
     if (tasks) {
         for (let index = 0; index < RHTs.length; index++) {
             const element = RHTs[index];
-            console.log("deleting RHT " + element);
+            // console.log("deleting RHT " + element);
             await (await db).RHT.delete(element.id);
         }
         for (let index = 0; index < tasks.length; index++) {
@@ -435,14 +435,14 @@ router.post('/update/:id', auth, async (req, res) => {
                 idrole: id,
                 idtask: element,
             };
-            console.log("adding RHT " + RHT);
+            // console.log("adding RHT " + RHT);
             await (await db).RHT.addRHT(RHT);
         }
     }
     if (req.body.tasks.length == 0) {
         for (let index = 0; index < RHTs.length; index++) {
             const element = RHTs[index];
-            console.log("deleting RHT " + element);
+            // console.log("deleting RHT " + element);
             await (await db).RHT.delete(element.id);
         }
     }

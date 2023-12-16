@@ -315,7 +315,7 @@ router.post('/add', auth, async (req, res) => {
     let body = req.body;
     const hashedPassword = await bcrypt.hash(body.password, 10);
     delete body.password;
-    console.log(body)
+    // console.log(body)
     let users_phone = await (await db).user.getUserForObj({ phone: body.phone });
     let users_email = await (await db).user.getUserForObj({ email: body.email });
     if (users_phone.length > 0) {
@@ -337,7 +337,7 @@ router.post('/add', auth, async (req, res) => {
         id: generateId(),
         ...body
     };
-    console.log(body);
+    // console.log(body);
     const role = await (await db).role.getRole(req.body.idrole);
     if (!role) {
         return res.render('public/pages/erors/error-404', {
@@ -432,7 +432,7 @@ router.post('/update/:id', auth, async (req, res) => {
     }
     let body = req.body;
     let id = Number(req.params.id);
-    console.log(body);
+    // console.log(body);
     if (!id) {
         return res.render('public/pages/erors/error-404', {
             status: 400,
@@ -474,7 +474,7 @@ router.post('/update/:id', auth, async (req, res) => {
 
     }
     let result = await (await db).user.update(id, body);
-    console.log(result);
+    // console.log(result);
     if (result.hasOwnProperty('error')) {
         return res.render('public/pages/erors/error-404', {
             status: 400,

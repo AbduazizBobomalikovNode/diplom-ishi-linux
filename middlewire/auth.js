@@ -20,7 +20,7 @@ module.exports = async function (req, res, next) {
         console.log('cookies  ishlamadi');
         return res.send(`<script>setTimeout(()=>{window.location.href = '/login';},10);</script>`);
     }
-    console.log('cookies  ishladi:', x_token);
+    // console.log('cookies  ishladi:', x_token);
     let path_req = req.originalUrl.slice(0,req.originalUrl.lastIndexOf("/"));
     
     console.log(path_req);

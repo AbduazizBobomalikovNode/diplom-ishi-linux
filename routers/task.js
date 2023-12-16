@@ -247,7 +247,7 @@ router.get('/add',  auth,async (req, res) => {
 });
 
 router.post('/add',  auth,async (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     const { error } = validate(req.body, "add");
     if (error) {
         return res.render('public/pages/erors/error-404',{
@@ -281,7 +281,7 @@ router.post('/add',  auth,async (req, res) => {
             path: '/task'
         });
     }
-    console.log(result);
+    // console.log(result);
 
     res.send(`<!DOCTYPE html>
     <html lang="en">
@@ -382,7 +382,7 @@ router.post('/update/:id',  auth,async (req, res) => {
     }
     let body = req.body;
     let id = Number(req.params.id);
-    console.log(body);
+    // console.log(body);
     if (!id) {
         return res.render('public/pages/erors/error-404',{
             status:400,
@@ -416,7 +416,7 @@ router.post('/update/:id',  auth,async (req, res) => {
         });
     }
     let result = await (await db).task.update(id, body);
-    console.log(result);
+    // console.log(result);
     if (result.hasOwnProperty('error')) {
         return res.render('public/pages/erors/error-404',{
             status:400,
