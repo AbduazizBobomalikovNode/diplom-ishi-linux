@@ -722,9 +722,9 @@ function formatDoc(data) {
                 if (Object.hasOwnProperty.call(data, key)) {
                     switch (key) {
                         case "line17_name":
-                            if (data['line17'].length > 0 ||
+                            if ((data['line17'].length > 0 ||
                                 data['line17_1'].length > 0 ||
-                                data['line17_2'].length > 0) {
+                                data['line17_2'].length > 0) && (data['line17']!= 'xxxxxxxx'|| data['line17_1']!= 'xxxxxxxx'|| data['line17_2']!= 'xxxxxxxx')) {
                                 template.line17_name = data.line17_name
                             } else {
                                 template.line17_name = 'xxxxxxxx';
@@ -734,9 +734,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line18_name":
-                            if (data['line18'].length > 0 ||
+                            if ((data['line18'].length > 0 ||
                                 data['line18_1'].length > 0 ||
-                                data['line18_2'].length > 0) {
+                                data['line18_2'].length > 0) && (data['line18']!= 'xxxxxxxx'|| data['line18_1']!= 'xxxxxxxx'|| data['line18_2']!= 'xxxxxxxx')) {
                                 template.line18_name = data.line18_name
                             } else {
                                 template.line18_name = 'xxxxxxxx';
@@ -746,9 +746,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line19_name":
-                            if (data['line19'].length > 0 ||
+                            if ((data['line19'].length > 0 ||
                                 data['line19_1'].length > 0 ||
-                                data['line19_2'].length > 0) {
+                                data['line19_2'].length > 0) && (data['line19']!= 'xxxxxxxx'|| data['line19_1']!= 'xxxxxxxx'|| data['line19_2']!= 'xxxxxxxx')) {
                                 template.line19_name = data.line19_name
                             } else {
                                 template.line19_name = 'xxxxxxxx';
@@ -758,9 +758,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line20_name":
-                            if (data['line20'].length > 0 ||
+                            if ((data['line20'].length > 0 ||
                                 data['line20_1'].length > 0 ||
-                                data['line20_2'].length > 0) {
+                                data['line20_2'].length > 0) && (data['line20']!= 'xxxxxxxx'|| data['line20_1']!= 'xxxxxxxx'|| data['line20_2']!= 'xxxxxxxx')) {
                                 template.line20_name = data.line20_name
                             } else {
                                 template.line20_name = 'xxxxxxxx';
@@ -770,9 +770,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line21_name":
-                            if (data['line21'].length > 0 ||
+                            if ((data['line21'].length > 0 ||
                                 data['line21_1'].length > 0 ||
-                                data['line21_2'].length > 0) {
+                                data['line21_2'].length > 0) && (data['line21']!= 'xxxxxxxx'|| data['line21_1']!= 'xxxxxxxx'|| data['line21_2']!= 'xxxxxxxx')) {
                                 template.line21_name = data.line21_name
                             } else {
                                 template.line21_name = 'xxxxxxxx';
@@ -782,9 +782,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line22_name":
-                            if (data['line22'].length > 0 ||
+                            if ((data['line22'].length > 0 ||
                                 data['line22_1'].length > 0 ||
-                                data['line22_2'].length > 0) {
+                                data['line22_2'].length > 0) && (data['line22']!= 'xxxxxxxx'|| data['line22_1']!= 'xxxxxxxx'|| data['line22_2']!= 'xxxxxxxx')) {
                                 template.line22_name = data.line22_name
                             } else {
                                 template.line22_name = 'xxxxxxxx';
@@ -794,9 +794,9 @@ function formatDoc(data) {
                             }
                             break;
                         case "line23_name":
-                            if (data['line23'].length > 0 ||
+                            if ((data['line23'].length > 0 ||
                                 data['line23_1'].length > 0 ||
-                                data['line23_2'].length > 0) {
+                                data['line23_2'].length > 0) && (data['line23']!= 'xxxxxxxx'|| data['line23_1']!= 'xxxxxxxx'|| data['line23_2']!= 'xxxxxxxx')) {
                                 data.line23_name = data.line23_name
                             } else {
                                 template.line23_name = 'xxxxxxxx';

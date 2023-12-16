@@ -39,7 +39,7 @@ function Certificate(table) {
         }
         console.log(quary);
         const result = await table.find(quary, { projection: { _id: 0, lastModified: 0 } })
-            .sort({ son: 1}).limit(limit).skip(skip).toArray();
+            .sort({ son: -1}).limit(limit).skip(skip).toArray();
         return result;
     };
     this.addCertificate = async (certificate) => {
