@@ -578,7 +578,7 @@ function formatDoc(data) {
                 template.line5demo = line5demo[1];
                 template.line5demo_end = line5demo[2];
 
-                let line5 = balance_doc(data.line5, 45);
+                let line5 = balance_doc(line5demo[3], 45);
                 template.line5_start = line5[0];
                 template.line5 = line5[1];
                 template.line5_end = line5[2];
@@ -797,7 +797,7 @@ function formatDoc(data) {
                             if ((data['line23'].length > 0 ||
                                 data['line23_1'].length > 0 ||
                                 data['line23_2'].length > 0) && (data['line23']!= 'xxxxxxxx'|| data['line23_1']!= 'xxxxxxxx'|| data['line23_2']!= 'xxxxxxxx')) {
-                                data.line23_name = data.line23_name
+                                    template.line23_name = data.line23_name
                             } else {
                                 template.line23_name = 'xxxxxxxx';
                                 data.line23 = 'xxxxxxxx';
@@ -982,7 +982,7 @@ function formatDoc(data) {
                 template.line2demo = line2demo[1];
                 template.line2demo_end = line2demo[2];
 
-                let line2 = balance_doc(data.line2, 75);
+                let line2 = balance_doc(line2demo[3], 75);
                 template.line2_start = line2[0];
                 template.line2 = line2[1];
                 template.line2_end = line2[2];
@@ -992,7 +992,7 @@ function formatDoc(data) {
                 template.line3demo = line3demo[1];
                 template.line3demo_end = line3demo[2];
 
-                let line3 = balance_doc(data.line3, 76);
+                let line3 = balance_doc(line3demo[3], 76);
                 template.line3_start = line3[0];
                 template.line3 = line3[1];
                 template.line3_end = line3[2];
@@ -1027,7 +1027,7 @@ function formatDoc(data) {
                 template.line9demo = line9demo[1];
                 template.line9demo_end = line9demo[2];
 
-                let line9 = balance_doc(data.line9, 85);
+                let line9 = balance_doc(line9demo[3], 85);
                 template.line9_start = line9[0];
                 template.line9 = line9[1];
                 template.line9_end = line9[0];

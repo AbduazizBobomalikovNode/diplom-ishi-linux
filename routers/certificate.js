@@ -15,7 +15,7 @@ setTimeout(async () => { db = await db }, 100);//
 
 router.get("/", auth, async (req, res) => {
   let docs = await (await db).certificate.getCertificateAll();
-  let tasks = await (await db).certificate.getCertificateAllFilter(0,15,{});
+  let tasks = await (await db).certificate.getCertificateAllFilter(0, 15, {});
   // toPdf();
   // let id = (await (await db).role.getRoleForObj({ name: "Qiyoslovchi" }))[0].id;
   let employee = (await (await db).user.getUserAll()).map((el) => {
@@ -202,7 +202,7 @@ router.get("/active/:id", auth, async (req, res) => {
   result_format.id = certifcate.id;
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
-  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, certifcate.type, certifcate.lang,true);
+  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, certifcate.type, certifcate.lang, true);
 
   if (!result_pdf) {
     return res.render('public/pages/erors/error-404', {
@@ -769,14 +769,17 @@ router.post('/update/:id', auth, async (req, res) => {
     // return res.status(404).json({ error: 'ushbu idga mos certificate to\'pilmadi!' });
   }
   // console.log("certificate : ",certificate);
-
+  let flag = false;
+  if (certificate.status) {
+    flag = true;
+  }
 
   let result_format = formatDoc(body);
   // console.log("result_format : ",result_format);
   result_format.id = certificate.id;
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
-  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, body.doc, body.lang);
+  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, body.doc, body.lang,flag);
 
   if (!result_pdf) {
     return res.render('public/pages/erors/error-404', {
