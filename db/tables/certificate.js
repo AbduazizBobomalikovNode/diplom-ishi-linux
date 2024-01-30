@@ -1,6 +1,180 @@
 var searchError = require('../../resurs/functions/erors');
+const fill_up = require("../../resurs/functions/fill_up");
 
 function Certificate(table) {
+    this.searchDocument = async (word) => {
+        // const query = { someField: { $regex: word, $options: 'i' } };
+        const query = {
+            $or: [
+                {
+                    "id": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "organization": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "compare": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "comply_with": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "son": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "date": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line1": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line2": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line3": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line4": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line5": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line6": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line7": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line8": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line9": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line10": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line11": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line12": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line13": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line14": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line15": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line16": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line17": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line19": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line20": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line21": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "data.line22": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+            ]
+        };
+        const result = await table.find(query, {
+            projection: { _id: 0 }
+        }).toArray();
+        return result;
+    };
     this.getCertificateObj = async (obj) => {
         const result = await table.find(obj, {
             projection: { _id: 0 }
@@ -39,7 +213,7 @@ function Certificate(table) {
         }
         console.log(quary);
         const result = await table.find(quary, { projection: { _id: 0, lastModified: 0 } })
-            .sort({ son: -1}).limit(limit).skip(skip).toArray();
+            .sort({ son: -1 }).limit(limit).skip(skip).toArray();
         return result;
     };
     this.addCertificate = async (certificate) => {
@@ -68,6 +242,16 @@ function Certificate(table) {
     this.delete = async (id) => {
         const result = await table.deleteOne({ id: id })
         return result;
+    }
+    this.allDocUpdate = async ()=>{
+        const result = await table.find({}, { projection: { _id: 0 } })
+            .sort({ date: -1 }).toArray();
+            for (let index = 0; index < result.length; index++) {
+                let element =  fill_up(result[index].data,result[index]);
+                console.log(element);
+                this.update(result[index].id,element);
+            }
+        // fill_up
     }
 }
 

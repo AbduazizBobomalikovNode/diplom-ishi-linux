@@ -9,7 +9,10 @@ var auth = require("../middlewire/auth");
 var toPdf = require("../resurs/functions/pdf")
 const formatDoc = require('../resurs/functions/formatDoc');
 const action = require("../resurs/functions/action");
+const fiil_up = require("../resurs/functions/fill_up");
 const { unlinkSync } = require('fs');
+
+
 
 setTimeout(async () => { db = await db }, 100);//
 
@@ -81,11 +84,12 @@ router.get("/", auth, async (req, res) => {
   if (req.user.rolePath.includes("activeDocumentDelete")) {
     bolimlar.activeDocumentDelete = true;
   }
-
+  // (await db).certificate.allDocUpdate();
   res.render('public/pages/certificate', {
     path: '',
     docs: tasks,
     count: docs.length,
+    filter_count:docs.length,
     page: 1,
     lang: lang,
     doc_name: doc_name,
@@ -99,12 +103,20 @@ router.get("/", auth, async (req, res) => {
 router.get("/page/:page", auth, async (req, res) => {
   let page = parseInt(req.params.page);
   let query = req.query;
+  let fcount = null;
   // console.log(page, query);
   if (!page) {
     page = 1;
   }
   let certificate = await (await db).certificate.getCertificateAll();
-  let certificates = await (await db).certificate.getCertificateAllFilter(page * 15 - 15, 15, query);
+  let certificates = null;
+  if (query.search && query.search.length > 0) {
+    certificates = await (await db).certificate.searchDocument(query.search);
+    fcount = certificates.length;
+  }else{
+    fcount = certificate.length;
+    certificates = await (await db).certificate.getCertificateAllFilter(page * 15 - 15, 15, query);
+  }
   // let id = (await (await db).role.getRoleForObj({ name: "Qiyoslovchi" }))[0].id;
   let employee = (await (await db).user.getUserAll()).map((el) => {
     return el.name
@@ -169,6 +181,7 @@ router.get("/page/:page", auth, async (req, res) => {
     path: '../',
     docs: certificates,
     count: certificate.length,
+    filter_count:fcount,
     page: page,
     lang: lang,
     doc_name: doc_name,
@@ -503,7 +516,14 @@ router.post('/add', auth, async (req, res) => {
     link: result_pdf.link,
   }
   certificate.url = result_pdf.url;
-
+  let add = fiil_up(body);
+  if (add) {
+    for (const key in add) {
+      if (Object.hasOwnProperty.call(add, key)) {
+        certificate[key] = add[key];
+      }
+    }
+  }
   let result = await (await db).certificate.addCertificate(certificate);
   if (result.hasOwnProperty('error')) {
     return res.render('public/pages/erors/error-404', {
@@ -769,17 +789,17 @@ router.post('/update/:id', auth, async (req, res) => {
     // return res.status(404).json({ error: 'ushbu idga mos certificate to\'pilmadi!' });
   }
   // console.log("certificate : ",certificate);
+
   let flag = false;
   if (certificate.status) {
     flag = true;
   }
-
   let result_format = formatDoc(body);
   // console.log("result_format : ",result_format);
   result_format.id = certificate.id;
   var name = generateId();
   var hash = crypto.createHash('md5').update(name + "").digest('hex');
-  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, body.doc, body.lang,flag);
+  let result_pdf = await toPdf({ ...result_format }, hash, __dirname, body.doc, body.lang, flag);
 
   if (!result_pdf) {
     return res.render('public/pages/erors/error-404', {
@@ -799,7 +819,14 @@ router.post('/update/:id', auth, async (req, res) => {
     link: result_pdf.link,
   }
   certificate.url = result_pdf.url;
-
+  let add = fiil_up(body);
+  if (add) {
+    for (const key in add) {
+      if (Object.hasOwnProperty.call(add, key)) {
+        certificate[key] = add[key];
+      }
+    }
+  }
   let result = await (await db).certificate.update(id, certificate);
   if (result.hasOwnProperty('error')) {
     return res.render('public/pages/erors/error-404', {

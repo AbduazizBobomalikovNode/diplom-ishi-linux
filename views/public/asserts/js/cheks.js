@@ -101,3 +101,9 @@ button.onmousedown = () => {
         button.href = "#"
     }
 }
+
+document.getElementById("search").onclick = ()=>{
+    let word =  document.getElementById("searchdata").value;
+    // alert(word);
+    window.location.href =  `/certifcate/page/1?search=${word}`;
+};

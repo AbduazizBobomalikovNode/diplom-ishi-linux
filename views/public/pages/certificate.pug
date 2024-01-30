@@ -138,7 +138,7 @@ html(lang='en')
                             | #{count} 
                             mark(style='background:none;color: greenyellow;')  ta
                     h6.text-muted.font-weight-normal.text-center
-                      b #{filter} 
+                      b #{filter_count} 
                       |  ta
                       br
                       |  elementdan filtrlangan
@@ -178,6 +178,17 @@ html(lang='en')
                             option Hammasi
                             each val, index in employee
                               option(value=val) #{val}
+                    .row
+                      .col-12
+                        .template-demo
+                          .form-group
+                            label(for='filter4') Malumotlar qidirish 
+                            .row
+                              .col-9
+                                input.form-control(type='text' name='search' id="searchdata" required='' placeholder='id,MCHJ ......')
+                              .col-3
+                                button.btn.btn-primary.mr-2(type='submit' id="search") Qidirish
+            
             .row
               .col-12.grid-margin
                 .card
@@ -207,8 +218,11 @@ html(lang='en')
                             th  Hujjat raqami
                             th  Hujjat turi
                             th  Hujjat tili
-                            th  yaratilgan  vaqti 
-                            th  xodim 
+                            th  Amal qilish sanasi 
+                            th  Qiyoslash sanasi
+                            th  Tashkilot 
+                            th  Yaratilgan  vaqti 
+                            th  Xodim 
                             th  Status 
                             th  Ammallar 
                         tbody
@@ -222,6 +236,9 @@ html(lang='en')
                               td  #{docs[x].id}
                               td  #{doc_name[docs[x].type]}
                               td  #{lang[docs[x].lang]} 
+                              td  #{docs[x].comply_with} 
+                              td  #{docs[x].compare} 
+                              td  #{docs[x].organization?docs[x].organization.length>25?docs[x].organization.slice(0,25):docs[x].organization:""} 
                               td  #{docs[x].date}
                               td  #{docs[x].employee}
                               if !activeDocumentUpdate
@@ -250,9 +267,9 @@ html(lang='en')
                                       button.btn.btn-outline-light(type='button' title='tahrirlash')
                                         i.mdi.mdi-lead-pencil
                                   if deletes && docs[x].status &&  activeDocumentDelete
-                                    a(href='/certifcate/delete/'+docs[x].id)
-                                      button.btn.btn-outline-danger(type='button')
-                                        i.mdi.mdi-close
+                                      a(href='/certifcate/delete/'+docs[x].id)
+                                        button.btn.btn-outline-danger(type='button')
+                                          i.mdi.mdi-close
                                   else if deletes && !docs[x].status
                                     a(href='/certifcate/delete/'+docs[x].id)
                                       button.btn.btn-outline-danger(type='button')
@@ -269,20 +286,20 @@ html(lang='en')
                                   else 
                                     button.btn.btn-outline-secondary.disabled(type='button') 
                                       i.mdi.mdi-arrow-left-bold
-                                  - for (var x = 0; x < count/15; x++)
+                                  - for (var x = 0; x < filter_count/15; x++)
                                     if page-1==x
                                       button.btn.btn-primary(type='button') #{x+1}
                                     else
                                       a(href='/certifcate/page/'+(x+1))
                                         button.btn.btn-outline-secondary(type='button') #{x+1}
-                                  if page+1<=parseInt(count/15)+(count%15>0?1:0) 
+                                  if page+1<=parseInt(filter_count/15)+(filter_count%15>0?1:0) 
                                     a(href='/certifcate/page/'+(page+1))
                                       button.btn.btn-outline-secondary(type='button')   
                                         i.mdi.mdi-arrow-right-bold
                                   else 
                                     button.btn.btn-outline-secondary.disabled(type='button')   
                                       i.mdi.mdi-arrow-right-bold
-                            td(colspan=4)  #{count} ta element mavjut
+                            td(colspan=4)  #{filter_count} ta element mavjut
           // content-wrapper ends
           // partial:partials/_footer.html
           footer.footer
