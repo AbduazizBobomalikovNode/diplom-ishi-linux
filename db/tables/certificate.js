@@ -13,6 +13,18 @@ function Certificate(table) {
                     }
                 },
                 {
+                    "id": parseInt(word)
+                },
+                {
+                    "son": {
+                        $regex: word,
+                        $options: "i"
+                    }
+                },
+                {
+                    "son": parseInt(word)
+                },
+                {
                     "organization": {
                         $regex: word,
                         $options: "i"
@@ -26,12 +38,6 @@ function Certificate(table) {
                 },
                 {
                     "comply_with": {
-                        $regex: word,
-                        $options: "i"
-                    }
-                },
-                {
-                    "son": {
                         $regex: word,
                         $options: "i"
                     }
